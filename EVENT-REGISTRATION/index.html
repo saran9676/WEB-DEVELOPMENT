@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Reservation Portal</title>
+    <style>
+        body {
+            margin-top: 20px;
+            border: 5px double #000000;
+            background-color: #f9d6c3;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 60%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #000000;
+        }
+        input[type='text'], input[type='tel'], input[type='email'], input[type='password'] {
+            border-radius: 5px;
+            padding: 4px;
+            width: 200px;
+        }
+        select {
+            width: 210px;
+            border-radius: 5px;
+            padding: 4px;
+        }
+        #btnSubmit, #btnReset {
+            background-color: #709b6a;
+            color: #ffffff;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 17px;
+            width: 100px;
+            margin-left: 20px;
+        }
+        #requestHeading {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+    <h1 id="requestHeading">Event Reservation Portal</h1>
+    <hr/>
+    <form onsubmit="return false">
+        <table id="eventRegistration">
+            <tr>
+                <td><label for="eventSelection">Event</label></td>
+                <td>
+                    <select id="eventSelection" onchange="eventOnChange()" required>
+                        <option value="" hidden>--Select Event--</option>
+                        <option value="Conference">Conference</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Webinar">Webinar</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="ticketType">
+                <td><label for="ticket">Ticket Type</label></td>
+                <td>
+                    <select id="ticket" required>
+                        <option value="" hidden>--Select--</option>
+                        <!-- Options can be dynamically added here based on the event selection -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <input type="submit" value="Register" id="btnSubmit" onclick="registerEvent()"/>
+                    <input type="reset" id="btnReset" value="Clear" onclick="clearValues()"/>
+                </td>
+            </tr>
+        </table>
+        <br/>
+        <div id="result"></div>
+    </form>
+</body>
+</html>
